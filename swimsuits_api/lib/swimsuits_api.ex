@@ -1,0 +1,2 @@
+defmodule SwimsuitsApi do
+end
