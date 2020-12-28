@@ -17,3 +17,11 @@ config :logger, :console,
 config :phoenix, :json_library, Jason
 
 import_config "#{Mix.env()}.exs"
+
+config :swimsuits_api, SwimsuitsApiWeb.Auth.Guardian,
+  issuer: "swimsuits_api",
+  secret_key: "ntcliUkYeo1bNJPnZ6gd82BsxCQPLQ6pjwTZRdrhwVnd+d1uSR2s/8LzUnzhfQYt"
+
+config :swimsuits_api, SwimsuitsApiWeb.Auth.Pipeline,
+  module: SwimsuitsApiWeb.Auth.Guardian,
+  error_handler: SwimsuitsApiWeb.Auth.ErrorHandler

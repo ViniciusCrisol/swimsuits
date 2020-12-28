@@ -7,6 +7,9 @@ defmodule SwimsuitsApiWeb.Router do
 
   scope "/api", SwimsuitsApiWeb do
     pipe_through :api
+
+    post "/users", UsersController, :create
+    post "/users/session", SessionsController, :create
   end
 
   if Mix.env() in [:dev, :test] do
