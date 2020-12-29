@@ -32,8 +32,8 @@ defmodule SwimsuitsApi.Schemas.UserSchema do
     |> validate_required(@required_params)
     |> validate_format(:email, ~r/^[\w.!#$%&’*+\-\/=?\^`{|}~]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*$/i)
     |> validate_length(:password, min: 6)
-    |> validate_length(:name, max: 100)
-    |> validate_length(:email, max: 100)
+    |> validate_length(:name, min: 2, max: 100)
+    |> validate_length(:email, min: 2, max: 100)
     |> unique_constraint(:email)
     |> put_pass_hash()
   end

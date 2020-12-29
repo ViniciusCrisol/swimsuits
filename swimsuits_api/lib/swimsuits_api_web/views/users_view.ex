@@ -3,7 +3,7 @@ defmodule SwimsuitsApiWeb.UsersView do
 
   alias SwimsuitsApi.Schemas.UserSchema
 
-  def render("create.json", %{
+  def render("create_and_update.json", %{
         token: token,
         user: %UserSchema{id: id, name: name, email: email, inserted_at: inserted_at}
       }) do

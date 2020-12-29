@@ -5,11 +5,21 @@ defmodule SwimsuitsApiWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :auth do
+    plug SwimsuitsApiWeb.Auth.Pipeline
+  end
+
   scope "/api", SwimsuitsApiWeb do
     pipe_through :api
 
     post "/users", UsersController, :create
     post "/users/session", SessionsController, :create
+  end
+
+  scope "/api", SwimsuitsApiWeb do
+    pipe_through [:api, :auth]
+
+    resources "/brands", BrandsController, only: [:create]
   end
 
   if Mix.env() in [:dev, :test] do

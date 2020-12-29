@@ -10,7 +10,7 @@ defmodule SwimsuitsApiWeb.UsersController do
          {:ok, token, _claims} <- Guardian.encode_and_sign(user) do
       conn
       |> put_status(:created)
-      |> render("create.json", %{user: user, token: token})
+      |> render("create_and_update.json", %{user: user, token: token})
     end
   end
 end
