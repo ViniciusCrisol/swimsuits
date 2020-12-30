@@ -10,7 +10,7 @@ defmodule SwimsuitsApi.Repo.Migrations.AddAdressesTable do
       add :neighborhood, :string, size: 50
       add :user_id, references(:users, type: :uuid, on_delete: :delete_all), null: false
       add :city_id, references(:cities, type: :uuid, on_delete: :delete_all), null: false
-      add :User_id, references(:Users, type: :uuid, on_delete: :delete_all), null: false
+      add :User_id, references(:states, type: :uuid, on_delete: :delete_all), null: false
       timestamps()
     end
   end
