@@ -1,8 +1,9 @@
-defmodule SwimsuitsApi.Schemas.UserSchema do
+defmodule SwimsuitsApi.Schemas.User do
   use Ecto.Schema
   import Ecto.Changeset
 
   alias SwimsuitsApi.Repo
+  alias SwimsuitsApi.Schemas.Adress
 
   @primary_key {:id, Ecto.UUID, autogenerate: true}
 
@@ -15,6 +16,7 @@ defmodule SwimsuitsApi.Schemas.UserSchema do
     field :password, :string, virtual: true
 
     timestamps()
+    has_many(:adress, Adress)
   end
 
   def build(params) do

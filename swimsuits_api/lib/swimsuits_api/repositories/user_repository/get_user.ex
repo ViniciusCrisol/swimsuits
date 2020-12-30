@@ -1,7 +1,7 @@
-defmodule SwimsuitsApi.Repositories.UserRepository.GetUser do
+defmodule SwimsuitsApi.Repositories.User.GetUser do
   alias Ecto.UUID
   alias SwimsuitsApi.Repo
-  alias SwimsuitsApi.Schemas.UserSchema
+  alias SwimsuitsApi.Schemas.User
 
   def call(id) do
     id
@@ -17,7 +17,7 @@ defmodule SwimsuitsApi.Repositories.UserRepository.GetUser do
     |> validate_user()
   end
 
-  defp fetch_user(uuid), do: Repo.get(UserSchema, uuid)
+  defp fetch_user(uuid), do: Repo.get(User, uuid)
 
   defp validate_user(nil), do: {:error, :not_found, "User not found!"}
   defp validate_user(user), do: {:ok, user}

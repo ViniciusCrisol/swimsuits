@@ -2,7 +2,7 @@ defmodule SwimsuitsApiWeb.Auth.Guardian do
   use Guardian, otp_app: :swimsuits_api
 
   alias SwimsuitsApi.Repo
-  alias SwimsuitsApi.Schemas.UserSchema
+  alias SwimsuitsApi.Schemas.User
 
   def subject_for_token(user, _claims) do
     sub = to_string(user.id)
@@ -23,13 +23,13 @@ defmodule SwimsuitsApiWeb.Auth.Guardian do
   end
 
   defp authenticate_user(password, email) do
-    case Repo.get_by(UserSchema, email: email) do
+    case Repo.get_by(User, email: email) do
       nil -> {:error, :not_found, "User not found!"}
       user -> validate_password(user, password)
     end
   end
 
-  defp validate_password(%UserSchema{password_hash: hash} = user, password) do
+  defp validate_password(%User{password_hash: hash} = user, password) do
     case Argon2.verify_pass(password, hash) do
       true -> create_token(user)
       false -> {:error, :unauthorized, "User unauthorized!"}

@@ -1,16 +1,19 @@
-defmodule SwimsuitsApi.Schemas.Brand do
+defmodule SwimsuitsApi.Schemas.City do
   use Ecto.Schema
   import Ecto.Changeset
 
   alias SwimsuitsApi.Repo
+  alias SwimsuitsApi.Schemas.Adress
 
   @primary_key {:id, Ecto.UUID, autogenerate: true}
 
   @required_params [:name]
 
-  schema "brands" do
+  schema "cities" do
     field :name, :string
+
     timestamps()
+    has_many(:adress, Adress)
   end
 
   def build(params) do
@@ -26,7 +29,7 @@ defmodule SwimsuitsApi.Schemas.Brand do
     module_or_brand
     |> cast(params, @required_params)
     |> validate_required(@required_params)
-    |> validate_length(:name, min: 2, max: 25)
+    |> validate_length(:name, min: 2, max: 50)
     |> unique_constraint(:name)
   end
 end
