@@ -39,7 +39,7 @@ defmodule SwimsuitsApi.Repositories.Adress.CreateAdress do
 
   defp get_city(%{"city" => city}) do
     case Repo.get_by(City, name: city) do
-      nil -> City.build(%{"name" => String.capitalize(city)})
+      nil -> City.build(%{"name" => String.downcase(city)})
       city -> {:ok, city}
     end
   end
