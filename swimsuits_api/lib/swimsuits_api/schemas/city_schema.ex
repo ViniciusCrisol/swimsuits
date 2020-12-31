@@ -25,8 +25,8 @@ defmodule SwimsuitsApi.Schemas.City do
   def changeset(params), do: create_changeset(%__MODULE__{}, params)
   def changeset(brand, params), do: create_changeset(brand, params)
 
-  defp create_changeset(module_or_brand, params) do
-    module_or_brand
+  defp create_changeset(module_or_city, params) do
+    module_or_city
     |> cast(params, @required_params)
     |> validate_required(@required_params)
     |> validate_length(:name, min: 2, max: 50)

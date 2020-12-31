@@ -8,7 +8,7 @@ defmodule SwimsuitsApi.Schemas.Adress do
   @primary_key {:id, Ecto.UUID, autogenerate: true}
   @foreign_key_type Ecto.UUID
 
-  @required_params [:postal_code, :street, :number, :neighborhood, :user_id, :city_id, :User_id]
+  @required_params [:postal_code, :street, :number, :neighborhood, :user_id, :city_id, :state_id]
 
   schema "adresses" do
     field :postal_code, :string
@@ -31,8 +31,8 @@ defmodule SwimsuitsApi.Schemas.Adress do
   def changeset(params), do: create_changeset(%__MODULE__{}, params)
   def changeset(brand, params), do: create_changeset(brand, params)
 
-  defp create_changeset(module_or_brand, params) do
-    module_or_brand
+  defp create_changeset(module_or_adress, params) do
+    module_or_adress
     |> cast(params, @required_params)
     |> validate_required(@required_params)
     |> validate_length(:postal_code, min: 5, max: 10)
@@ -41,6 +41,6 @@ defmodule SwimsuitsApi.Schemas.Adress do
     |> validate_length(:neighborhood, min: 2, max: 50)
     |> foreign_key_constraint(:user_id)
     |> foreign_key_constraint(:city_id)
-    |> foreign_key_constraint(:User_id)
+    |> foreign_key_constraint(:state_id)
   end
 end
