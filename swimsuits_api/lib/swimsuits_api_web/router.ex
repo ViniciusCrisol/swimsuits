@@ -20,6 +20,7 @@ defmodule SwimsuitsApiWeb.Router do
     pipe_through [:api, :auth]
 
     resources "/brands", BrandsController, only: [:create]
+    post "/users/adresses/:id", AdressesController, :create
   end
 
   if Mix.env() in [:dev, :test] do

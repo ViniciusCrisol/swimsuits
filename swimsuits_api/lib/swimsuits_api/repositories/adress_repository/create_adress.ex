@@ -4,26 +4,13 @@ defmodule SwimsuitsApi.Repositories.Adress.CreateAdress do
 
   @error_message "Internal server error, try again!"
 
-  def call(
-        %{
-          "postal_code" => postal_code,
-          "street" => street,
-          "number" => number,
-          "neighborhood" => neighborhood,
-          "user_id" => user_id
-        } = params
-      ) do
+  def call(%{"id" => user_id} = params) do
     with {:ok, %{id: city_id}} <- get_city(params),
          {:ok, %{id: state_id}} <- get_state(params) do
-      create_adress(%{
-        "postal_code" => postal_code,
-        "street" => street,
-        "number" => number,
-        "neighborhood" => neighborhood,
-        "user_id" => user_id,
-        "city_id" => city_id,
-        "state_id" => state_id
-      })
+      Map.merge(params, %{"city_id" => city_id, "state_id" => state_id, "user_id" => user_id})
+      |> create_adress()
+      |> get_adress_city()
+      |> get_adress_state()
     else
       {:error, changeset} -> {:error, :bad_request, changeset}
     end
@@ -44,7 +31,7 @@ defmodule SwimsuitsApi.Repositories.Adress.CreateAdress do
     end
   end
 
-  defp get_city(_params), do: {:error, "The city field cannot be blank!"}
+  defp get_city(_params), do: {:error, %{city: ["can't be blank"]}}
 
   defp get_state(%{"state" => state}) do
     case Repo.get_by(State, abbreviation: state) do
@@ -53,5 +40,11 @@ defmodule SwimsuitsApi.Repositories.Adress.CreateAdress do
     end
   end
 
-  defp get_state(_params), do: {:error, "The state field cannot be blank!"}
+  defp get_state(_params), do: {:error, %{state: ["can't be blank"]}}
+
+  defp get_adress_city({:error, _status, _reason} = error), do: error
+  defp get_adress_city({:ok, adress}), do: {:ok, Repo.preload(adress, :city)}
+
+  defp get_adress_state({:error, _status, _reason} = error), do: error
+  defp get_adress_state({:ok, adress}), do: {:ok, Repo.preload(adress, :state)}
 end
