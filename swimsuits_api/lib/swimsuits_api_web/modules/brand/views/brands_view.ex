@@ -1,7 +1,7 @@
 defmodule SwimsuitsApiWeb.BrandsView do
   use SwimsuitsApiWeb, :view
 
-  alias SwimsuitsApi.Schemas.Brand
+  alias SwimsuitsApi.Modules.Brand
 
   def render("create_and_update.json", %{
         brand: %Brand{

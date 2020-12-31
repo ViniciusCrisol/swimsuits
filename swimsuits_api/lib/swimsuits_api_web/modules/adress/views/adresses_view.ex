@@ -1,7 +1,7 @@
 defmodule SwimsuitsApiWeb.AdressesView do
   use SwimsuitsApiWeb, :view
 
-  alias SwimsuitsApi.Schemas.{Adress, City, State}
+  alias SwimsuitsApi.Modules.{Adress, City, State}
 
   def render("create_and_update.json", %{
         adress: %Adress{

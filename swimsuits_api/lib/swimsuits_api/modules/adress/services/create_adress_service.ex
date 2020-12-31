@@ -1,5 +1,5 @@
-defmodule SwimsuitsApi.Repositories.Adress.CreateAdress do
-  alias SwimsuitsApi.Schemas.{Adress, City, State}
+defmodule SwimsuitsApi.Modules.Adress.Create do
+  alias SwimsuitsApi.Modules.{Adress, City, State}
   alias SwimsuitsApi.Repo
 
   @error_message "internal server error, try again"

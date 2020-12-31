@@ -1,9 +1,9 @@
-defmodule SwimsuitsApi.Schemas.User do
+defmodule SwimsuitsApi.Modules.User do
   use Ecto.Schema
   import Ecto.Changeset
 
   alias SwimsuitsApi.Repo
-  alias SwimsuitsApi.Schemas.Adress
+  alias SwimsuitsApi.Modules.Adress
 
   @primary_key {:id, Ecto.UUID, autogenerate: true}
 

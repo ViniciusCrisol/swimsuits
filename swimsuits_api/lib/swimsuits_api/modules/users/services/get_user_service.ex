@@ -1,7 +1,7 @@
-defmodule SwimsuitsApi.Repositories.User.GetUser do
+defmodule SwimsuitsApi.Modules.User.Get do
   alias Ecto.UUID
   alias SwimsuitsApi.Repo
-  alias SwimsuitsApi.Schemas.User
+  alias SwimsuitsApi.Modules.User
 
   def call(id) do
     id

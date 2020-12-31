@@ -1,16 +1,16 @@
-defmodule SwimsuitsApi.Schemas.City do
+defmodule SwimsuitsApi.Modules.State do
   use Ecto.Schema
   import Ecto.Changeset
 
   alias SwimsuitsApi.Repo
-  alias SwimsuitsApi.Schemas.Adress
+  alias SwimsuitsApi.Modules.Adress
 
   @primary_key {:id, Ecto.UUID, autogenerate: true}
 
-  @required_params [:name]
+  @required_params [:abbreviation]
 
-  schema "cities" do
-    field :name, :string
+  schema "states" do
+    field :abbreviation, :string
 
     timestamps()
     has_many(:adress, Adress)
@@ -25,11 +25,11 @@ defmodule SwimsuitsApi.Schemas.City do
   def changeset(params), do: create_changeset(%__MODULE__{}, params)
   def changeset(brand, params), do: create_changeset(brand, params)
 
-  defp create_changeset(module_or_city, params) do
-    module_or_city
+  defp create_changeset(module_or_state, params) do
+    module_or_state
     |> cast(params, @required_params)
     |> validate_required(@required_params)
-    |> validate_length(:name, min: 2, max: 50)
-    |> unique_constraint(:name)
+    |> validate_length(:abbreviation, min: 2, max: 2)
+    |> unique_constraint(:abbreviation)
   end
 end

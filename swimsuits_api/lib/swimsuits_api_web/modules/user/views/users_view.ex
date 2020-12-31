@@ -1,7 +1,7 @@
 defmodule SwimsuitsApiWeb.UsersView do
   use SwimsuitsApiWeb, :view
 
-  alias SwimsuitsApi.Schemas.User
+  alias SwimsuitsApi.Modules.User
 
   def render("create_and_update.json", %{
         token: token,

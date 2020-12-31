@@ -1,4 +1,4 @@
-defmodule SwimsuitsApi.Schemas.Brand do
+defmodule SwimsuitsApi.Modules.Brand do
   use Ecto.Schema
   import Ecto.Changeset
 
