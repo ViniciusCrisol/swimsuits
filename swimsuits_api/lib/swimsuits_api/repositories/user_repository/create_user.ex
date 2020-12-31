@@ -1,7 +1,7 @@
 defmodule SwimsuitsApi.Repositories.User.CreateUser do
   alias SwimsuitsApi.Schemas.User
 
-  @error_message "Internal server error, try again!"
+  @error_message "internal server error, try again"
 
   def call(params) do
     case User.build(params) do

@@ -17,14 +17,14 @@ defmodule SwimsuitsApiWeb.Auth.Guardian do
 
   def authenticate(%{"email" => email, "password" => password}) do
     case Regex.run(~r/^[\w.!#$%&’*+\-\/=?\^`{|}~]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*$/i, email) do
-      nil -> {:error, :unauthorized, "Invalid e-mail format!"}
+      nil -> {:error, :unauthorized, "invalid e-mail format"}
       _ -> authenticate_user(password, email)
     end
   end
 
   defp authenticate_user(password, email) do
     case Repo.get_by(User, email: email) do
-      nil -> {:error, :not_found, "User not found!"}
+      nil -> {:error, :not_found, "user not found"}
       user -> validate_password(user, password)
     end
   end
@@ -32,7 +32,7 @@ defmodule SwimsuitsApiWeb.Auth.Guardian do
   defp validate_password(%User{password_hash: hash} = user, password) do
     case Argon2.verify_pass(password, hash) do
       true -> create_token(user)
-      false -> {:error, :unauthorized, "User unauthorized!"}
+      false -> {:error, :unauthorized, "unauthorized"}
     end
   end
 

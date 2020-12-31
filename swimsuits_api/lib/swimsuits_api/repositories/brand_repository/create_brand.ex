@@ -1,7 +1,7 @@
 defmodule SwimsuitsApi.Repositories.Brand.CreateBrand do
   alias SwimsuitsApi.Schemas.Brand
 
-  @error_message "Internal server error, try again!"
+  @error_message "internal server error, try again"
 
   def call(params) do
     case Brand.build(params) do

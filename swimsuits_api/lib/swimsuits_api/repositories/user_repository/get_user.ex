@@ -9,7 +9,7 @@ defmodule SwimsuitsApi.Repositories.User.GetUser do
     |> get_user()
   end
 
-  defp get_user(:error), do: {:error, :unauthorized, "Invalid ID format!"}
+  defp get_user(:error), do: {:error, :unauthorized, "invalid ID format"}
 
   defp get_user({:ok, uuid}) do
     uuid
@@ -19,6 +19,6 @@ defmodule SwimsuitsApi.Repositories.User.GetUser do
 
   defp fetch_user(uuid), do: Repo.get(User, uuid)
 
-  defp validate_user(nil), do: {:error, :not_found, "User not found!"}
+  defp validate_user(nil), do: {:error, :not_found, "user not found"}
   defp validate_user(user), do: {:ok, user}
 end

@@ -4,7 +4,8 @@ defmodule SwimsuitsApiWeb.BrandsController do
   action_fallback SwimsuitsApiWeb.FallbackController
 
   def create(conn, params) do
-    SwimsuitsApi.create_brand(params)
+    params
+    |> SwimsuitsApi.create_brand()
     |> handle_response(conn, "create_and_update.json", :created)
   end
 

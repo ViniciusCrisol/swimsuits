@@ -4,7 +4,8 @@ defmodule SwimsuitsApiWeb.AdressesController do
   action_fallback SwimsuitsApiWeb.FallbackController
 
   def create(conn, params) do
-    SwimsuitsApi.create_adress(params)
+    params
+    |> SwimsuitsApi.create_adress()
     |> handle_response(conn, "create_and_update.json", :created)
   end
 
