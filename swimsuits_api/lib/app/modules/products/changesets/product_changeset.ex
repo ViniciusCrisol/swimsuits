@@ -3,7 +3,7 @@ defmodule App.Modules.Product do
   import Ecto.Changeset
 
   alias App.Repo
-  alias App.Modules.Brand
+  alias App.Modules.{Brand, Size}
 
   @primary_key {:id, Ecto.UUID, autogenerate: true}
   @foreign_key_type Ecto.UUID
@@ -16,6 +16,7 @@ defmodule App.Modules.Product do
 
     timestamps()
     belongs_to(:brand, Brand)
+    has_many(:size, Size)
   end
 
   def build(params) do
@@ -25,7 +26,7 @@ defmodule App.Modules.Product do
   end
 
   def changeset(params), do: create_changeset(%__MODULE__{}, params)
-  def changeset(user, params), do: create_changeset(user, params)
+  def changeset(product, params), do: create_changeset(product, params)
 
   defp create_changeset(module_or_product, params) do
     module_or_product

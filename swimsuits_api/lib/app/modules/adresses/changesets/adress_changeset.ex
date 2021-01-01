@@ -28,7 +28,7 @@ defmodule App.Modules.Adress do
   end
 
   def changeset(params), do: create_changeset(%__MODULE__{}, params)
-  def changeset(brand, params), do: create_changeset(brand, params)
+  def changeset(adress, params), do: create_changeset(adress, params)
 
   defp create_changeset(module_or_adress, params) do
     module_or_adress

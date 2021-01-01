@@ -22,7 +22,7 @@ defmodule App.Modules.City do
   end
 
   def changeset(params), do: create_changeset(%__MODULE__{}, params)
-  def changeset(brand, params), do: create_changeset(brand, params)
+  def changeset(city, params), do: create_changeset(city, params)
 
   defp create_changeset(module_or_city, params) do
     module_or_city
