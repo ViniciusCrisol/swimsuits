@@ -1,17 +1,15 @@
 defmodule WebApp.AdressesView do
   use WebApp, :view
 
-  alias App.Modules.{Adress, City, State}
-
   def render("create_and_update.json", %{
-        adress: %Adress{
+        adress: %{
           id: id,
           user_id: user_id,
           postal_code: postal_code,
           number: number,
           street: street,
-          city: %City{name: city_name},
-          state: %State{abbreviation: state_abbreviation},
+          city: %{name: city_name},
+          state: %{abbreviation: state_abbreviation},
           neighborhood: neighborhood,
           inserted_at: inserted_at
         }
