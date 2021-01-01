@@ -1,4 +1,4 @@
-defmodule SwimsuitsApi.Repo.Migrations.AddStatesTable do
+defmodule App.Repo.Migrations.AddStatesTable do
   use Ecto.Migration
 
   def change do

@@ -1,2 +1,2 @@
 ExUnit.start()
-Ecto.Adapters.SQL.Sandbox.mode(SwimsuitsApi.Repo, :manual)
+Ecto.Adapters.SQL.Sandbox.mode(App.Repo, :manual)

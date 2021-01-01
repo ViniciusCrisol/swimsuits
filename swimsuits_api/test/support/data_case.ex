@@ -1,4 +1,4 @@
-defmodule SwimsuitsApi.DataCase do
+defmodule App.DataCase do
   @moduledoc """
   This module defines the setup for tests requiring
   access to the application's data layer.
@@ -10,7 +10,7 @@ defmodule SwimsuitsApi.DataCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use SwimsuitsApi.DataCase, async: true`, although
+  by setting `use App.DataCase, async: true`, although
   this option is not recommended for other databases.
   """
 
@@ -18,20 +18,20 @@ defmodule SwimsuitsApi.DataCase do
 
   using do
     quote do
-      alias SwimsuitsApi.Repo
+      alias App.Repo
 
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
-      import SwimsuitsApi.DataCase
+      import App.DataCase
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(SwimsuitsApi.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(App.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(SwimsuitsApi.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(App.Repo, {:shared, self()})
     end
 
     :ok

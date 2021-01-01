@@ -7,7 +7,7 @@ database_url =
     For example: ecto://USER:PASS@HOST/DATABASE
     """
 
-config :swimsuits_api, SwimsuitsApi.Repo,
+config :app, App.Repo,
   url: database_url,
   pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10")
 
@@ -18,7 +18,7 @@ secret_key_base =
     You can generate one by calling: mix phx.gen.secret
     """
 
-config :swimsuits_api, SwimsuitsApiWeb.Endpoint,
+config :app, WebApp.Endpoint,
   http: [
     port: String.to_integer(System.get_env("PORT") || "4000"),
     transport_options: [socket_opts: [:inet6]]

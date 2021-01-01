@@ -1,5 +1,5 @@
-defmodule SwimsuitsApi do
-  alias SwimsuitsApi.Modules.{User, Brand, Adress, Product}
+defmodule App do
+  alias App.Modules.{User, Brand, Adress, Product}
 
   defdelegate fetch_user(params), to: User.Get, as: :call
   defdelegate create_user(params), to: User.Create, as: :call

@@ -1,19 +1,19 @@
-defmodule SwimsuitsApiWeb do
+defmodule WebApp do
   def controller do
     quote do
-      use Phoenix.Controller, namespace: SwimsuitsApiWeb
+      use Phoenix.Controller, namespace: WebApp
 
       import Plug.Conn
-      import SwimsuitsApiWeb.Gettext
-      alias SwimsuitsApiWeb.Router.Helpers, as: Routes
+      import WebApp.Gettext
+      alias WebApp.Router.Helpers, as: Routes
     end
   end
 
   def view do
     quote do
       use Phoenix.View,
-        root: "lib/swimsuits_api_web/templates",
-        namespace: SwimsuitsApiWeb
+        root: "lib/web_app/templates",
+        namespace: WebApp
 
       import Phoenix.Controller,
         only: [get_flash: 1, get_flash: 2, view_module: 1, view_template: 1]
@@ -34,7 +34,7 @@ defmodule SwimsuitsApiWeb do
   def channel do
     quote do
       use Phoenix.Channel
-      import SwimsuitsApiWeb.Gettext
+      import WebApp.Gettext
     end
   end
 
@@ -42,9 +42,9 @@ defmodule SwimsuitsApiWeb do
     quote do
       import Phoenix.View
 
-      import SwimsuitsApiWeb.ErrorHelpers
-      import SwimsuitsApiWeb.Gettext
-      alias SwimsuitsApiWeb.Router.Helpers, as: Routes
+      import WebApp.ErrorHelpers
+      import WebApp.Gettext
+      alias WebApp.Router.Helpers, as: Routes
     end
   end
 

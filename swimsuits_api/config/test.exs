@@ -1,13 +1,13 @@
 use Mix.Config
 
-config :swimsuits_api, SwimsuitsApi.Repo,
+config :app, App.Repo,
   username: "postgres",
   password: "postgres",
-  database: "swimsuits_api_test#{System.get_env("MIX_TEST_PARTITION")}",
+  database: "app_test#{System.get_env("MIX_TEST_PARTITION")}",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
 
-config :swimsuits_api, SwimsuitsApiWeb.Endpoint,
+config :app, WebApp.Endpoint,
   http: [port: 4002],
   server: false
 

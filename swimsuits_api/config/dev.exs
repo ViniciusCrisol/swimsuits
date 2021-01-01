@@ -1,6 +1,6 @@
 use Mix.Config
 
-config :swimsuits_api, SwimsuitsApi.Repo,
+config :app, App.Repo,
   username: "postgres",
   password: "docker",
   database: "swimsuits_api_dev",
@@ -8,7 +8,7 @@ config :swimsuits_api, SwimsuitsApi.Repo,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
-config :swimsuits_api, SwimsuitsApiWeb.Endpoint,
+config :app, WebApp.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
