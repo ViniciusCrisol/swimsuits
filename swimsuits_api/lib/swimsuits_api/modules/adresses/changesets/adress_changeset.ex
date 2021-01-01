@@ -7,7 +7,6 @@ defmodule SwimsuitsApi.Modules.Adress do
 
   @primary_key {:id, Ecto.UUID, autogenerate: true}
   @foreign_key_type Ecto.UUID
-
   @required_params [:postal_code, :street, :number, :neighborhood, :user_id, :city_id, :state_id]
 
   schema "adresses" do

@@ -3,14 +3,16 @@ defmodule SwimsuitsApi.Modules.Brand do
   import Ecto.Changeset
 
   alias SwimsuitsApi.Repo
+  alias SwimsuitsApi.Modules.Product
 
   @primary_key {:id, Ecto.UUID, autogenerate: true}
-
   @required_params [:name]
 
   schema "brands" do
     field :name, :string
+
     timestamps()
+    has_many(:product, Product)
   end
 
   def build(params) do

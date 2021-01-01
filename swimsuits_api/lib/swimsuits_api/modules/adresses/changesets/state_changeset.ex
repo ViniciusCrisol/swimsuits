@@ -6,7 +6,6 @@ defmodule SwimsuitsApi.Modules.State do
   alias SwimsuitsApi.Modules.Adress
 
   @primary_key {:id, Ecto.UUID, autogenerate: true}
-
   @required_params [:abbreviation]
 
   schema "states" do

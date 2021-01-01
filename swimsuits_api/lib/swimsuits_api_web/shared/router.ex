@@ -19,7 +19,8 @@ defmodule SwimsuitsApiWeb.Router do
   scope "/api", SwimsuitsApiWeb do
     pipe_through [:api, :auth]
 
-    resources "/brands", BrandsController, only: [:create]
+    post "/brands", BrandsController, :create
+    post "/products", ProductsController, :create
     post "/users/adresses/:id", AdressesController, :create
   end
 

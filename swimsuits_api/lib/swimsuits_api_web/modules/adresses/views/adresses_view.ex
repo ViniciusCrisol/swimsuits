@@ -8,6 +8,8 @@ defmodule SwimsuitsApiWeb.AdressesView do
           id: id,
           user_id: user_id,
           postal_code: postal_code,
+          number: number,
+          street: street,
           city: %City{name: city_name},
           state: %State{abbreviation: state_abbreviation},
           neighborhood: neighborhood,
@@ -17,6 +19,8 @@ defmodule SwimsuitsApiWeb.AdressesView do
     %{
       id: id,
       user_id: user_id,
+      number: number,
+      street: street,
       postal_code: postal_code,
       city: city_name,
       state: state_abbreviation,

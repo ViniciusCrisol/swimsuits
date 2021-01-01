@@ -6,7 +6,6 @@ defmodule SwimsuitsApi.Modules.User do
   alias SwimsuitsApi.Modules.Adress
 
   @primary_key {:id, Ecto.UUID, autogenerate: true}
-
   @required_params [:name, :email, :password]
 
   schema "users" do
@@ -33,9 +32,9 @@ defmodule SwimsuitsApi.Modules.User do
     |> cast(params, @required_params)
     |> validate_required(@required_params)
     |> validate_format(:email, ~r/^[\w.!#$%&’*+\-\/=?\^`{|}~]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*$/i)
-    |> validate_length(:password, min: 6)
     |> validate_length(:name, min: 2, max: 100)
     |> validate_length(:email, min: 2, max: 100)
+    |> validate_length(:password, min: 6)
     |> unique_constraint(:email)
     |> put_pass_hash()
   end

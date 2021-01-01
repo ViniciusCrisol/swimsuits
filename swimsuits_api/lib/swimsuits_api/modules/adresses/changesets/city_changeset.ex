@@ -6,7 +6,6 @@ defmodule SwimsuitsApi.Modules.City do
   alias SwimsuitsApi.Modules.Adress
 
   @primary_key {:id, Ecto.UUID, autogenerate: true}
-
   @required_params [:name]
 
   schema "cities" do
