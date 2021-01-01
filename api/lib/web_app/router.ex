@@ -19,9 +19,10 @@ defmodule WebApp.Router do
   scope "/api", WebApp do
     pipe_through [:api, :auth]
 
+    post "/users/adresses/:user_id", AdressesController, :create
     post "/brands", BrandsController, :create
     post "/products", ProductsController, :create
-    post "/users/adresses/:id", AdressesController, :create
+    post "/products/sizes/:product_id", SizesController, :create
   end
 
   if Mix.env() in [:dev, :test] do

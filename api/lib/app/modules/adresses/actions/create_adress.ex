@@ -4,10 +4,10 @@ defmodule App.Modules.Adress.Create do
 
   @error_message "internal server error, try again"
 
-  def call(%{"id" => user_id} = params) do
+  def call(params) do
     with {:ok, %{id: city_id}} <- get_city(params),
          {:ok, %{id: state_id}} <- get_state(params) do
-      Map.merge(params, %{"city_id" => city_id, "state_id" => state_id, "user_id" => user_id})
+      Map.merge(params, %{"city_id" => city_id, "state_id" => state_id})
       |> create_adress()
       |> get_adress_city()
       |> get_adress_state()
