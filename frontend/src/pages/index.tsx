@@ -1,6 +1,7 @@
 import { FiChevronDown } from 'react-icons/fi'
 import Head from 'next/head'
 
+import Header from '../components/Header'
 import { Container } from '../styles/pages/Home'
 
 const Home: React.FC = () => {
@@ -10,6 +11,7 @@ const Home: React.FC = () => {
         <title>Home</title>
       </Head>
 
+      <Header />
       <div className="main">
         <div className="header">
           <h1>Choise your best swimsuite!</h1>

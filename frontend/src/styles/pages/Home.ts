@@ -10,7 +10,9 @@ export const Container = styled.div`
   width: 100vw;
   overflow: hidden;
 
-  .main {
+  position: relative;
+
+  > .main {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -18,7 +20,7 @@ export const Container = styled.div`
     width: 100vw;
     height: 100vh;
 
-    padding: 64px 32px;
+    padding: 128px 32px 48px;
     background: url(${backgrounds.home});
     background-position: center;
 
@@ -56,13 +58,27 @@ export const Container = styled.div`
     }
 
     .footer {
+      width: 100%;
+
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
 
+      span {
+        margin-top: 8px;
+        color: #fff;
+        font-weight: bold;
+      }
+
       a {
+        max-width: 240px;
+        width: 100%;
+
         border-radius: 4px;
         border: 2px solid #fff;
+        backdrop-filter: blur(5px);
+        background: rgba(255, 255, 255, 0.25);
 
         display: flex;
         align-items: center;
@@ -73,7 +89,7 @@ export const Container = styled.div`
         }
 
         &:hover {
-          background: rgba(255, 255, 255, 0.3);
+          background: rgba(255, 255, 255, 0.35);
         }
       }
     }
@@ -85,7 +101,7 @@ export const Container = styled.div`
       height: 100%;
       min-height: 100vh;
 
-      padding: 64px 32px;
+      padding: 32px 64px;
     }
 
     div:nth-child(1) {
