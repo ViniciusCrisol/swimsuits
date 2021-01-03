@@ -18,13 +18,22 @@ const Home: React.FC = () => {
           <a>Go shopping</a>
         </div>
         <div className="footer">
-          <a href="">
+          <a>
             <FiChevronDown size={48} />
           </a>
         </div>
       </div>
       <section className="pages-container">
-        <div></div>
+        <div>
+          <h1>Shop Best Sellers</h1>
+
+          <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
         <div></div>
         <div></div>
         <div></div>

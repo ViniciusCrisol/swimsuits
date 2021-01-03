@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import theme from '../../styles/theme'
 
 export const Container = styled.header`
   position: fixed;
@@ -21,7 +20,16 @@ export const Container = styled.header`
   transition: background 160ms;
 
   .main {
+    width: 100%;
+    max-width: ${({ theme }) => theme.containerSize};
+
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
     h1 {
+      line-height: 1;
       font-weight: 400;
       font-family: 'Yellowtail', cursive;
 
@@ -31,6 +39,19 @@ export const Container = styled.header`
       svg {
         margin-right: 4px;
         fill: ${({ theme }) => theme.colors.primary};
+      }
+    }
+
+    ul {
+      list-style: none;
+      margin-left: 24px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      li + li {
+        margin-left: 12px;
       }
     }
   }

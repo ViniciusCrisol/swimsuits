@@ -20,9 +20,9 @@ export const Container = styled.div`
     width: 100vw;
     height: 100vh;
 
-    padding: 128px 32px 48px;
-    background: url(${backgrounds.home});
-    background-position: center;
+    padding: 128px 64px 48px;
+    background: url(${backgrounds.home}) no-repeat center;
+    background-size: cover;
 
     a {
       cursor: pointer;
@@ -30,6 +30,10 @@ export const Container = styled.div`
     }
 
     .header {
+      margin: 0 auto;
+      width: 100%;
+      max-width: ${({ theme }) => theme.containerSize};
+
       h1 {
         width: 100%;
         max-width: 280px;
@@ -72,12 +76,12 @@ export const Container = styled.div`
       }
 
       a {
-        max-width: 240px;
+        max-width: 200px;
         width: 100%;
 
         border-radius: 4px;
         border: 2px solid #fff;
-        backdrop-filter: blur(5px);
+        backdrop-filter: blur(10px);
         background: rgba(255, 255, 255, 0.25);
 
         display: flex;
@@ -96,27 +100,32 @@ export const Container = styled.div`
   }
 
   .pages-container {
-    div {
+    > div {
       width: 100vw;
       height: 100%;
       min-height: 100vh;
 
-      padding: 32px 64px;
+      padding: 64px;
     }
 
-    div:nth-child(1) {
-      background: lightcoral;
+    > div:nth-child(1) {
+      h1 {
+        line-height: 1;
+        font-weight: 400;
+        text-align: center;
+        font-family: 'Yellowtail', cursive;
+      }
     }
 
-    div:nth-child(2) {
+    > div:nth-child(2) {
       background: lightblue;
     }
 
-    div:nth-child(3) {
+    > div:nth-child(3) {
       background: lightseagreen;
     }
 
-    div:nth-child(4) {
+    > div:nth-child(4) {
       background: lightslategray;
     }
   }
