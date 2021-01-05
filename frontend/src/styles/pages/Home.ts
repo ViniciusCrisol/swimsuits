@@ -154,11 +154,45 @@ export const BestSellers = styled.ul`
 
   li {
     width: 100%;
-    height: 50vh;
+    height: 100%;
+    max-height: 540px;
     min-height: 360px;
 
-    border-radius: 4px;
-    background-color: ${({ theme }) => theme.colors.primary};
+    display: grid;
+    grid-template-rows: 1fr 80px;
+
+    > .image-container {
+      overflow: hidden;
+      position: relative;
+
+      width: 100%;
+      height: 100%;
+
+      border-radius: 4px;
+      background-color: ${({ theme }) => theme.colors.primary};
+
+      img {
+        width: 100%;
+        height: 100%;
+
+        object-fit: contain;
+        transition: opacity 160ms;
+      }
+    }
+
+    > .footer {
+      width: 100%;
+      height: 100%;
+
+      background: #fff;
+      margin-top: 16px;
+
+      .available-quantity {
+        display: block;
+        margin-top: 6px;
+        color: rgba(0, 0, 0, 0.5);
+      }
+    }
   }
 
   @media (max-width: 980px) {
