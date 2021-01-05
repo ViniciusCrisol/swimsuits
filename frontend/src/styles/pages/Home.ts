@@ -106,11 +106,24 @@ export const Container = styled.div`
       min-height: 100vh;
 
       padding: 64px;
+
+      @media (max-width: 980px) {
+        padding: 64px 32px;
+      }
+
+      @media (max-width: 640px) {
+        padding: 64px 16px;
+      }
     }
 
     > div:nth-child(1) {
+      max-width: ${({ theme }) => theme.containerSize};
+      width: 100%;
+      margin: 0 auto;
+
       h1 {
         line-height: 1;
+        font-size: 32px;
         font-weight: 400;
         text-align: center;
         font-family: 'Yellowtail', cursive;
@@ -128,5 +141,31 @@ export const Container = styled.div`
     > div:nth-child(4) {
       background: lightslategray;
     }
+  }
+`
+
+export const BestSellers = styled.ul`
+  margin-top: 64px;
+  list-style: none;
+
+  display: grid;
+  grid-gap: 16px;
+  grid-template-columns: repeat(4, 1fr);
+
+  li {
+    width: 100%;
+    height: 50vh;
+    min-height: 360px;
+
+    border-radius: 4px;
+    background-color: ${({ theme }) => theme.colors.primary};
+  }
+
+  @media (max-width: 980px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
   }
 `

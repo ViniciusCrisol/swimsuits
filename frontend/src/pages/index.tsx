@@ -2,7 +2,7 @@ import { FiChevronDown } from 'react-icons/fi'
 import Head from 'next/head'
 
 import Header from '../components/Header'
-import { Container } from '../styles/pages/Home'
+import { Container, BestSellers } from '../styles/pages/Home'
 
 const Home: React.FC = () => {
   return (
@@ -27,12 +27,12 @@ const Home: React.FC = () => {
         <div>
           <h1>Shop Best Sellers</h1>
 
-          <ul>
+          <BestSellers>
             <li></li>
             <li></li>
             <li></li>
             <li></li>
-          </ul>
+          </BestSellers>
         </div>
         <div></div>
         <div></div>
