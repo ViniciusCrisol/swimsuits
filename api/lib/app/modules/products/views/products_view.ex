@@ -6,6 +6,7 @@ defmodule WebApp.ProductsView do
           id: id,
           model: model,
           price: price,
+          thumbnail_url: thumbnail_url,
           description: description,
           brand: %{name: brand_name},
           inserted_at: inserted_at
@@ -15,6 +16,7 @@ defmodule WebApp.ProductsView do
       id: id,
       model: model,
       price: price,
+      thumbnail_url: thumbnail_url,
       description: description,
       brand: brand_name,
       inserted_at: inserted_at

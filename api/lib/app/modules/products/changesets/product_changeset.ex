@@ -7,11 +7,12 @@ defmodule App.Modules.Product do
 
   @primary_key {:id, Ecto.UUID, autogenerate: true}
   @foreign_key_type Ecto.UUID
-  @required_params [:model, :price, :description, :brand_id]
+  @required_params [:model, :price, :thumbnail_url, :description, :brand_id]
 
   schema "products" do
     field :model, :string
     field :price, :float
+    field :thumbnail_url, :string
     field :description, :string
 
     timestamps()
@@ -33,6 +34,11 @@ defmodule App.Modules.Product do
     |> cast(params, @required_params)
     |> validate_required(@required_params)
     |> validate_length(:model, min: 2, max: 50)
+    |> validate_length(:thumbnail_url, min: 2, max: 100)
+    |> validate_format(
+      :thumbnail_url,
+      ~r/https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,}/i
+    )
     |> validate_length(:description, min: 5)
     |> foreign_key_constraint(:brand_id)
   end

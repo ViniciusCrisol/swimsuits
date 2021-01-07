@@ -7,6 +7,7 @@ defmodule App.Repo.Migrations.AddProductsTable do
       add :model, :string
       add :price, :float
       add :description, :text
+      add :thumbnail_url, :string, size: 100
       add :brand_id, references(:brands, type: :uuid, on_delete: :delete_all), null: false
       timestamps()
     end
