@@ -106,11 +106,24 @@ export const Container = styled.div`
       min-height: 100vh;
 
       padding: 64px;
+
+      @media (max-width: 980px) {
+        padding: 64px 32px;
+      }
+
+      @media (max-width: 640px) {
+        padding: 64px 16px;
+      }
     }
 
     > div:nth-child(1) {
+      max-width: ${({ theme }) => theme.containerSize};
+      width: 100%;
+      margin: 0 auto;
+
       h1 {
         line-height: 1;
+        font-size: 32px;
         font-weight: 400;
         text-align: center;
         font-family: 'Yellowtail', cursive;
@@ -128,5 +141,65 @@ export const Container = styled.div`
     > div:nth-child(4) {
       background: lightslategray;
     }
+  }
+`
+
+export const BestSellers = styled.ul`
+  margin-top: 64px;
+  list-style: none;
+
+  display: grid;
+  grid-gap: 16px;
+  grid-template-columns: repeat(4, 1fr);
+
+  li {
+    width: 100%;
+    height: 100%;
+    max-height: 540px;
+    min-height: 360px;
+
+    display: grid;
+    grid-template-rows: 1fr 80px;
+
+    > .image-container {
+      overflow: hidden;
+      position: relative;
+
+      width: 100%;
+      height: 100%;
+
+      border-radius: 4px;
+      background-color: ${({ theme }) => theme.colors.primary};
+
+      img {
+        width: 100%;
+        height: 100%;
+
+        object-fit: contain;
+        transition: opacity 160ms;
+      }
+    }
+
+    > .footer {
+      width: 100%;
+      height: 100%;
+
+      background: #fff;
+      margin-top: 16px;
+
+      .available-quantity {
+        display: block;
+        margin-top: 6px;
+        color: rgba(0, 0, 0, 0.5);
+      }
+    }
+  }
+
+  @media (max-width: 980px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
   }
 `
