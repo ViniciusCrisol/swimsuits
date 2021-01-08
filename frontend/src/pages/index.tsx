@@ -11,46 +11,41 @@ const Home: React.FC = () => {
         <title>Home</title>
       </Head>
 
-      <Header />
       <div className="main">
+        <Header />
         <div className="header">
           <h1>Choise your best swimsuite!</h1>
           <a>Go shopping</a>
         </div>
         <div className="footer">
-          <a>
+          <a href="#main-container">
             <FiChevronDown size={48} />
           </a>
         </div>
       </div>
       <section className="pages-container">
-        <div>
+        <div id="main-container">
           <h1>Shop Best Sellers</h1>
-
           <BestSellers>
-            <li>
-              <div className="image-container">
-                <img
-                  src="https://images.unsplash.com/photo-1609778890036-04f69308b474?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80"
-                  alt=""
-                />
-              </div>
-              <div className="footer">
-                <h5>Biquíni Branco...</h5>
-                <span>R$ 120.00</span>
-                <strong className="available-quantity">
-                  Available: 5 peaces
-                </strong>
-              </div>
-            </li>
-            <li></li>
-            <li></li>
-            <li></li>
+            {[1, 2, 3, 4].map(item => (
+              <li key={item}>
+                <div className="image-container">
+                  <img
+                    src="https://images.unsplash.com/photo-1609778890036-04f69308b474?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80"
+                    alt=""
+                  />
+                </div>
+                <div className="footer">
+                  <div className="header">
+                    <h4>Biquíni Branco...</h4>
+                    <span>R$ 120.00</span>
+                  </div>
+                  <span className="available-quantity">Two units in stock</span>
+                </div>
+              </li>
+            ))}
           </BestSellers>
         </div>
-        <div></div>
-        <div></div>
-        <div></div>
       </section>
     </Container>
   )
